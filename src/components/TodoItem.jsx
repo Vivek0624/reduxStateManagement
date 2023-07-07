@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { toggleComplete } from "../redux/todoSlice";
+import { toggleComplete, deleteTodo } from "../redux/todoSlice";
 
 const TodoItem = ({ id, title, completed }) => {
   const dispatch = useDispatch();
@@ -14,10 +14,14 @@ const TodoItem = ({ id, title, completed }) => {
     );
   };
 
+  const handleDeleteClick = () => {
+    dispatch(deleteTodo());
+  };
+
   return (
     <li className={`list-group-item ${completed && "list-group-item-success"}`}>
       <div className="d-flex justify-content-between">
-        <span className="d-flex align-items-center">
+        <span className="d-flex  align-items-center">
           <input
             type="checkbox"
             className="mr-3"
